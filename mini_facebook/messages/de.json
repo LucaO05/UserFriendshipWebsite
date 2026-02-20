@@ -1,0 +1,24 @@
+{
+  "auth": {
+    "login": "Anmelden",
+    "signUp": "Registrieren",
+    "signIn": "Einloggen",
+    "createAccount": "Konto erstellen",
+    "password": "Passwort",
+    "username": "Benutzername",
+    "usernamePlaceholder": "Benutzername wählen",
+    "firstname": "Vorname",
+    "firstnamePlaceholder": "Dein Vorname",
+    "lastname": "Nachname",
+    "lastnamePlaceholder": "Dein Nachname",
+    "email": "E-Mail",
+    "emailPlaceholder": "deine@email.de"
+  },
+  "branding": {
+    "projectName": "mini facebook",
+    "tagline": "Die einzig gute Social Media Plattform",
+    "feature1": "Mit Freunden weltweit verbinden",
+    "feature2": "Deine Momente teilen",
+    "feature3": "In Kontakt bleiben"
+  }
+}
