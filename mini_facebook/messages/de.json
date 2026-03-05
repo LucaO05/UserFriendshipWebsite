@@ -12,7 +12,12 @@
     "lastname": "Nachname",
     "lastnamePlaceholder": "Dein Nachname",
     "email": "E-Mail",
-    "emailPlaceholder": "deine@email.de"
+    "emailPlaceholder": "deine@email.de",
+    "loading": "Bitte warten...",
+    "genericError": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "alreadyLoggedIn": "Du bist bereits eingeloggt.",
+    "goToDashboard": "Zum Dashboard",
+    "registerSuccess": "Registrierung erfolgreich. Bitte jetzt einloggen."
   },
   "branding": {
     "projectName": "mini facebook",
@@ -20,5 +25,17 @@
     "feature1": "Mit Freunden weltweit verbinden",
     "feature2": "Deine Momente teilen",
     "feature3": "In Kontakt bleiben"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "success": "Login erfolgreich! Deine Registrierung funktioniert.",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "username": "Benutzername",
+    "email": "E-Mail",
+    "logout": "Ausloggen",
+    "notLoggedInTitle": "Nicht eingeloggt",
+    "notLoggedInText": "Bitte logge dich zuerst ein, um dein Dashboard zu sehen.",
+    "backToLogin": "Zurück zum Login"
   }
 }

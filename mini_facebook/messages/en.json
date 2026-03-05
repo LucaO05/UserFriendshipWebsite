@@ -12,7 +12,12 @@
     "lastname": "Lastname",
     "lastnamePlaceholder": "Your last name",
     "email": "Email",
-    "emailPlaceholder": "your@email.com"
+    "emailPlaceholder": "your@email.com",
+    "loading": "Please wait...",
+    "genericError": "Something went wrong. Please try again.",
+    "alreadyLoggedIn": "You are already logged in.",
+    "goToDashboard": "Go to dashboard",
+    "registerSuccess": "Registration successful. Please login now."
   },
   "branding": {
     "projectName": "mini facebook",
@@ -20,5 +25,17 @@
     "feature1": "Connect with friends worldwide",
     "feature2": "Share your moments",
     "feature3": "Stay in touch"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "success": "Login successful! Your registration works.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "username": "Username",
+    "email": "Email",
+    "logout": "Log out",
+    "notLoggedInTitle": "Not logged in",
+    "notLoggedInText": "Please login first to view your dashboard.",
+    "backToLogin": "Back to login"
   }
 }

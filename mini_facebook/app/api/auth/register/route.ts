@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
-import {ApiError} from "@/lib/api/errors";
 import {registerUser} from "@/lib/auth/service";
-import {validateRegisterInput} from "@/lib/auth/validaiton";
+import {validateRegisterInput} from "@/lib/auth/validation";
+import {toErrorResponse} from "@/lib/api/http-error";
 
 export async function POST(request: Request) {
     try {
@@ -19,13 +19,6 @@ export async function POST(request: Request) {
             {status: 201},
         );
     } catch (error) {
-        if (error instanceof ApiError) {
-            return NextResponse.json({success: false, message: error.message}, {status: error.statusCode});
-        }
-
-        return NextResponse.json(
-            {success: false, message: "Interner Serverfehler."},
-            {status: 500},
-        );
+        return toErrorResponse(error);
     }
 }

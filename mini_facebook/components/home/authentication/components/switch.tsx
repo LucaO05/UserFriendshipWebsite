@@ -11,6 +11,7 @@ export const AuthSwitch = ({ isLogin, setIsLogin }: Props) => {
     return (
         <div className="flex gap-2 mb-8 bg-slate-900/50 rounded-lg p-1">
             <button
+                type="button"
                 onClick={() => setIsLogin(true)}
                 className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
                     isLogin
@@ -21,6 +22,7 @@ export const AuthSwitch = ({ isLogin, setIsLogin }: Props) => {
                 {t("login")}
             </button>
             <button
+                type="button"
                 onClick={() => setIsLogin(false)}
                 className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
                     !isLogin
