@@ -7,6 +7,7 @@ export function toErrorResponse(error: unknown) {
             {
                 success: false,
                 message: error.message,
+                ...(error.payload ?? {}),
             },
             {status: error.statusCode},
         );

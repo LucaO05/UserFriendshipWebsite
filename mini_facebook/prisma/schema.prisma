@@ -8,15 +8,52 @@ datasource db {
 }
 
 model User {
-  id                String  @id @default(uuid())
+  id                String   @id @default(uuid())
   firstName         String
   lastName          String
-  email             String  @unique
-  username          String  @unique
+  email             String   @unique
+  username          String   @unique
   password          String
-  isVerified        Boolean @default(false)
+  isVerified        Boolean  @default(false)
   verificationToken String?
+  verificationTokenExpiresAt DateTime?
   createdAt         DateTime @default(now())
+  sentRequests      FriendRequest[] @relation("FriendRequestSender")
+  receivedRequests  FriendRequest[] @relation("FriendRequestReceiver")
+  friendshipsA      Friendship[]    @relation("FriendshipUserA")
+  friendshipsB      Friendship[]    @relation("FriendshipUserB")
 
   @@map("users")
+}
+
+model FriendRequest {
+  id         String              @id @default(uuid())
+  senderId   String
+  receiverId String
+  status     FriendRequestStatus @default(PENDING)
+  createdAt  DateTime            @default(now())
+  respondedAt DateTime?
+  sender     User                @relation("FriendRequestSender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver   User                @relation("FriendRequestReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@unique([senderId, receiverId])
+  @@map("friend_requests")
+}
+
+model Friendship {
+  id        String   @id @default(uuid())
+  userAId   String
+  userBId   String
+  createdAt DateTime @default(now())
+  userA     User     @relation("FriendshipUserA", fields: [userAId], references: [id], onDelete: Cascade)
+  userB     User     @relation("FriendshipUserB", fields: [userBId], references: [id], onDelete: Cascade)
+
+  @@unique([userAId, userBId])
+  @@map("friendships")
+}
+
+enum FriendRequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
 }

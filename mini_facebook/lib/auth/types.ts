@@ -7,6 +7,26 @@ export type RegisterInput = {
 };
 
 export type LoginInput = {
-    email: string;
+    identifier: string;
     password: string;
+};
+
+export type UpdateUsernameInput = {
+    email: string;
+    username: string;
+};
+
+export type UpdatePasswordInput = {
+    email: string;
+    oldPassword: string;
+    newPassword: string;
+};
+
+export type VerifyCodeInput = {
+    email: string;
+    code: string;
+};
+
+export type ResendVerificationInput = {
+    email: string;
 };
