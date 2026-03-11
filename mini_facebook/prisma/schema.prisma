@@ -16,6 +16,7 @@ model User {
   password          String
   isVerified        Boolean @default(false)
   verificationToken String?
+  createdAt         DateTime @default(now())
 
   @@map("users")
 }

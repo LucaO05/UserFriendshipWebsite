@@ -68,8 +68,6 @@ export async function loginUser(input: LoginInput) {
         throw new ApiError("Ungültige Zugangsdaten.", 401);
     }
 
-    const safeUser = {...user};
-    delete safeUser.password;
-
+    const {password: _password, ...safeUser} = user;
     return safeUser;
 }
