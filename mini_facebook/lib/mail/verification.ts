@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import {ApiError} from "@/lib/api/errors";
 
 export async function sendVerificationCodeEmail(email: string, code: string) {
   const host = process.env.SMTP_HOST;
@@ -12,21 +13,30 @@ export async function sendVerificationCodeEmail(email: string, code: string) {
     return;
   }
 
-  const transporter = nodemailer.createTransport({
-    host,
-    port: Number(port),
-    secure: Number(port) === 465,
-    auth: {
-      user,
-      pass,
-    },
-  });
+  try {
+    const transporter = nodemailer.createTransport({
+      host,
+      port: Number(port),
+      secure: Number(port) === 465,
+      auth: {
+        user,
+        pass: pass.replace(/\s+/g, ""),
+      },
+    });
 
-  await transporter.sendMail({
-    from,
-    to: email,
-    subject: "Dein Verifizierungscode",
-    text: `Dein Code lautet: ${code}`,
-    html: `<p>Dein Verifizierungscode lautet: <strong>${code}</strong></p>`,
-  });
+    await transporter.sendMail({
+      from,
+      to: email,
+      subject: "Dein Verifizierungscode",
+      text: `Dein Code lautet: ${code}`,
+      html: `<p>Dein Verifizierungscode lautet: <strong>${code}</strong></p>`,
+    });
+  } catch (error) {
+    console.error("SMTP-Versand fehlgeschlagen:", error);
+    throw new ApiError(
+      "E-Mail-Versand fehlgeschlagen. Prüfe SMTP_USER/SMTP_PASS (bei Gmail App-Passwort).",
+      502,
+      {requiresVerification: true, email},
+    );
+  }
 }
