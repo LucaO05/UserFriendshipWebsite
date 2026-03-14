@@ -13,7 +13,9 @@ export async function POST(request: Request) {
         return NextResponse.json(
             {
                 success: true,
-                message: "Registrierung erfolgreich.",
+                message: "Registrierung erfolgreich. Bitte Code aus der E-Mail eingeben.",
+                requiresVerification: true,
+                email: user.email,
                 user,
             },
             {status: 201},
